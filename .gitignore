@@ -2,7 +2,6 @@
 
 ./internal/pkg/log/*.log
 
+*.log
 
 *.toml
-
-test_main.go

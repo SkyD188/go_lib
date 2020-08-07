@@ -1,13 +1,16 @@
 package config
 
-import "github.com/spf13/viper"
+import (
+	"github.com/spf13/viper"
+)
 
-func (c *configStruct) InitConfig(confName, confType, confPath string, conf interface{}) {
+func InitConfig(confName, confType, confPath string, conf interface{}) {
 	v := viper.New()
 
-	v.SetConfigName(confName) // 配置文件的名字
+	//v.SetConfigName(confName) // 配置文件的名字
 	v.SetConfigType(confType) // 配置文件的类型
-	v.AddConfigPath(confPath) // 配置文件的路径
+	v.SetConfigFile(confPath) // 配置文件的路径
+	//v.AddConfigPath(confPath) // 配置文件的路径
 
 	if err := v.ReadInConfig(); err != nil {
 		panic(err)
@@ -17,11 +20,4 @@ func (c *configStruct) InitConfig(confName, confType, confPath string, conf inte
 		panic(err)
 	}
 
-}
-
-type configStruct struct {
-}
-
-func Conf() Iface {
-	return &configStruct{}
 }
