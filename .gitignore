@@ -5,3 +5,6 @@
 *.log
 
 *.toml
+
+go.mod
+go.sum
